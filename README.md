@@ -6,7 +6,7 @@
 
 A BTC trading bot for make.fun's "Race a BTC trading bot live for 24 hours": it buys Coinbase Wrapped BTC (cbBTC) with the whole $1,000 of paper money on the first tradable bar and holds, guarded by a wide 2.5% trailing stop and a 4% trend exit below the 240-bar moving average, and re-enters only when the close clears the 60-bar average by 0.5%. Long only, one position, no leverage, no shorts, deterministic integer math, no clock, no network.
 
-The dev window rises about 3.2%, so a buy-and-hold shape passes the dev gate with a wide margin: graded locally on the kit's frozen 24-hour dev window this bot makes about +$32 net PnL on a single trade (see the grade-local output; the exact figure is in the submission record).
+The dev window rises about 3.2%, so a buy-and-hold shape passes the dev gate with a wide margin. Graded locally on the kit's frozen 24-hour dev window (two executions, L1 regrade reproduced byte for byte) this bot makes **+$32.167313 net PnL** on a single trade, max drawdown 1.98%, fees $0.813033 — the exits never fire on this window, as designed.
 
 ## Strategy
 

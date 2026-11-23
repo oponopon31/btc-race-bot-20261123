@@ -78,7 +78,10 @@ await runBars({
         longSma !== null && close * BPS < longSma * (BPS - BigInt(TREND_GAP_BPS));
 
       if (stoppedOut || trendBroken) {
-        peakValue = 0n;
+        // Do not reset peakValue here: if this sell is rejected the position
+        // is still held next bar, and the stop must keep measuring from the
+        // original peak, not from the lower post-crash value. peakValue is
+        // reset by the flat branch below, once the position is really gone.
         return [{ side: 'sell', symbol: SYMBOL, qty, max_slippage_bps: MAX_SLIPPAGE_BPS }];
       }
       return [];
